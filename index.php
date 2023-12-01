@@ -1,4 +1,16 @@
-<?php include __DIR__ . '/partials/header.php'; ?>
+<?php include __DIR__ . '/partials/header.php';
+
+if (isset($_POST['task'])) {
+  $new_task = $_POST['task'];
+
+  var_dump($_POST);
+  // array_push($list, $new_task);
+  // file_put_contents('Model/to-do-list.json', json_encode($list));
+
+
+}
+
+?>
 
 
 
