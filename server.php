@@ -6,12 +6,17 @@ $filecontent = file_get_contents(__DIR__ . '/Model/to-do-list.json');
 $list = json_decode($filecontent, true);
 
 //var_dump($list);
-
+$last_id = '';
+foreach ($list as $key => $value) {
+    $last_id = $value['id'] > $last_id ? $value['id'] : $last_id;
+}
+//var_dump($last_id);
 if (isset($_POST['task'])) {
+    $last_id++;
     $new_task = [
         'text' => $_POST['task'],
         'done' => false,
-        'id' => 4
+        'id' => $last_id
     ];
 
     //var_dump($_POST);

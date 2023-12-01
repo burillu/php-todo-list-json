@@ -31,21 +31,10 @@ createApp({
       this.toDoList.splice(index, 1)
     },
     addItem() {
-      //console.log(this.newItemList);
-      this.lastId++;
-      const newItem = {
-        text: this.newItemList,
-        done: false,
-        id: this.lastId
-
-      }
       //chamata axios POST
 
       const data = new FormData();
       data.append('task', this.newItemList);
-      // data.append('done', false);
-      // data.append('id', this.lastId);
-      //console.log(data);
       axios.post(this.apiUrl, data)
         .then(resp => {
           console.log(resp.data);
