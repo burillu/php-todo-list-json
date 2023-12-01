@@ -6,30 +6,23 @@ createApp({
   data() {
     return {
       message: 'Hello Pippo!',
-      toDoList: [
-        {
-          text: 'Fare la Spesa',
-          done: true,
-          id: 1
-        },
-        {
-          text: 'Fare la lavatrice',
-          done: false,
-          id: 2
-        },
-        {
-          text: 'Pagare l\' affitto',
-          done: false,
-          id: 3
-        },
-
-      ],
+      toDoList: {
+        text: "Fare la Spesa",
+        done: true,
+        id: 1
+      },
       lastId: 3,
-      newItemList: ''
+      newItemList: '',
+      apiUrl: 'server.php'
 
     }
   },
   methods: {
+    readJson() {
+      axios.get(this.apiUrl).then(resp => {
+        console.log(resp.data);
+      })
+    },
     removeItem(ident) {
       const index = this.findElement(ident, this.toDoList)
       //const index = this.toDoList.findIndex((el)=>el.id === ident)
@@ -55,6 +48,10 @@ createApp({
     },
     findElement(ident, array) {
       return array.findIndex(el => el.id === ident);
-    }
+    },
+
+  },
+  created() {
+    this.readJson();
   }
 }).mount('#app')
