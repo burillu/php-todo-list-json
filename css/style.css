@@ -1,0 +1,48 @@
+header img {
+    width: 100px;
+}
+
+.done {
+    text-decoration: line-through;
+}
+
+.empty-list {
+    height: 100px;
+}
+
+li span,
+li i {
+    cursor: pointer;
+}
+
+body {
+    background: url(https://t4.ftcdn.net/jpg/01/94/26/13/360_F_194261326_4Z2pXippWG3kJrz4XhmHwEq8DhEP5dBz.jpg);
+
+}
+
+.my-container {
+    border-radius: 12px;
+    padding: 5em;
+    /* height: 50vh; */
+    background-color: rgba(255, 255, 255, 0.678);
+
+}
+
+/* .list-enter-active,
+.list-leave-active {
+  transition: all 0.5s ease;
+}
+.list-enter-from,
+.list-leave-to {
+  opacity: 0;
+  transform: translateX(30px);
+} */
+.v-enter-active,
+.v-leave-active {
+    transition: opacity 0.5s ease;
+}
+
+.v-enter-from,
+.v-leave-to {
+    opacity: 0;
+}
