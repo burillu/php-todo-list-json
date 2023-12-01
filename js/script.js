@@ -6,11 +6,11 @@ createApp({
   data() {
     return {
       message: 'Hello Pippo!',
-      toDoList: {
-        text: "Fare la Spesa",
+      toDoList: [{
+        text: "Pippo",
         done: true,
         id: 1
-      },
+      }],
       lastId: 3,
       newItemList: '',
       apiUrl: 'server.php'
@@ -20,7 +20,8 @@ createApp({
   methods: {
     readJson() {
       axios.get(this.apiUrl).then(resp => {
-        console.log(resp.data);
+        //console.log(resp.data);
+        this.toDoList = resp.data;
       })
     },
     removeItem(ident) {
