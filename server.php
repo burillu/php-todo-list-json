@@ -26,6 +26,12 @@ if (isset($_POST['task'])) {
 
 
 }
+if (isset($_POST['id'])) {
+    $id = $_POST['id'];
+    //cercare elemento e poi cancellare
+    array_search($id, $list['id']);
+
+}
 
 // $students = [
 //     [

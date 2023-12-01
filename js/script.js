@@ -24,18 +24,25 @@ createApp({
         this.toDoList = resp.data;
       })
     },
+    postAxios(key, value, url) {
+      const data = new FormData();
+      data.append(key, value);
+      return axios.post(url, data);
+    },
     removeItem(ident) {
-      const index = this.findElement(ident, this.toDoList)
+      //const index = this.findElement(ident, this.toDoList)
       //const index = this.toDoList.findIndex((el)=>el.id === ident)
       //console.log(index);
-      this.toDoList.splice(index, 1)
+      this.postAxios('id', ident, this.apiUrl)
+        .then(resp => {
+          console.log(resp.data);
+        });
+
+      //this.toDoList.splice(index, 1)
     },
     addItem() {
       //chamata axios POST
-
-      const data = new FormData();
-      data.append('task', this.newItemList);
-      axios.post(this.apiUrl, data)
+      this.postAxios('task', this.newItemList, this.apiUrl)
         .then(resp => {
           console.log(resp.data);
           this.toDoList = resp.data;
