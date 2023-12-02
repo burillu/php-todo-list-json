@@ -11,6 +11,7 @@ foreach ($list as $key => $value) {
     $last_id = $value['id'] > $last_id ? $value['id'] : $last_id;
 }
 //var_dump($last_id);
+//arrivano nuove task
 if (isset($_POST['task'])) {
     $last_id++;
     $new_task = [
@@ -26,28 +27,23 @@ if (isset($_POST['task'])) {
 
 
 }
-if (isset($_POST['id'])) {
-    $id = $_POST['id'];
+//task da cancellare
+if (isset($_POST['delete'])) {
+    $id = $_POST['delete'];
     //cercare elemento e poi cancellare
-    array_search($id, $list['id']);
+    $index = null;
+    foreach ($list as $key => $value) {
+        if ($value['id'] === $id) {
+            $index = $key;
+        }
+
+    }
+    //var_dump($index);
+    unset($list[$id - 1]);
+    //var_dump($list);
+    file_put_contents(__DIR__ . '/Model/to-do-list.json', json_encode($list));
 
 }
-
-// $students = [
-//     [
-//         'name' => 'Mario',
-//         'last_name' => 'Rossi'
-//     ],
-//     [
-//         'name' => 'Giovanna',
-//         'last_name' => 'Bianchi'
-//     ],
-// ];
-
-// $list[] = 'Vue';
-// $newContent = json_encode($list);
-// file_put_contents('todo-list.json', $newContent);
-
 
 header('Content-Type: application/json');
 

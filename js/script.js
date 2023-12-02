@@ -33,9 +33,10 @@ createApp({
       //const index = this.findElement(ident, this.toDoList)
       //const index = this.toDoList.findIndex((el)=>el.id === ident)
       //console.log(index);
-      this.postAxios('id', ident, this.apiUrl)
+      this.postAxios('delete', ident, this.apiUrl)
         .then(resp => {
           console.log(resp.data);
+          this.toDoList = resp.data;
         });
 
       //this.toDoList.splice(index, 1)
