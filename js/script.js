@@ -5,7 +5,7 @@ const { createApp } = Vue
 createApp({
   data() {
     return {
-      message: 'Hello Pippo!',
+      message: 'To-do List php',
       toDoList: [{
         text: "Pippo",
         done: true,
