@@ -29,17 +29,17 @@ if (isset($_POST['task'])) {
 }
 //task da cancellare
 if (isset($_POST['delete'])) {
-    $id = $_POST['delete'];
+    $index = $_POST['delete'];
     //cercare elemento e poi cancellare
-    $index = null;
-    foreach ($list as $key => $value) {
-        if ($value['id'] === $id) {
-            $index = $key;
-        }
+    //$index = null;
+    // foreach ($list as $key => $value) {
+    //     if ($value['id'] === $id) {
+    //         $index = $key;
+    //     }
 
-    }
+    // }
     //var_dump($index);
-    unset($list[$id - 1]);
+    unset($list[$index]);
     //var_dump($list);
     file_put_contents(__DIR__ . '/Model/to-do-list.json', json_encode($list));
 

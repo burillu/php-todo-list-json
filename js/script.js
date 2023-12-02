@@ -22,6 +22,7 @@ createApp({
       axios.get(this.apiUrl).then(resp => {
         //console.log(resp.data);
         this.toDoList = resp.data;
+        console.log(this.toDoList);
       })
     },
     postAxios(key, value, url) {
@@ -30,10 +31,12 @@ createApp({
       return axios.post(url, data);
     },
     removeItem(ident) {
-      //const index = this.findElement(ident, this.toDoList)
-      //const index = this.toDoList.findIndex((el)=>el.id === ident)
-      //console.log(index);
-      this.postAxios('delete', ident, this.apiUrl)
+      const index = this.findElement(ident, this.toDoList)
+      console.log(this.toDoList);
+      //const index = this.toDoList.findIndex((el) => el.id === ident)
+      console.log(ident);
+
+      this.postAxios('delete', index, this.apiUrl)
         .then(resp => {
           console.log(resp.data);
           this.toDoList = resp.data;
@@ -58,7 +61,7 @@ createApp({
     },
     itemDone(ident) {
       const index = this.findElement(ident, this.toDoList);
-      this.toDoList[index].done = !this.toDoList[index].done;
+      //this.toDoList[index].done = !this.toDoList[index].done;
       //obj.done=!obj.done
       //console.log('item done')
     },
@@ -69,5 +72,7 @@ createApp({
   },
   created() {
     this.readJson();
+
+
   }
 }).mount('#app')
