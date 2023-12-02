@@ -44,6 +44,22 @@ if (isset($_POST['delete'])) {
     file_put_contents(__DIR__ . '/Model/to-do-list.json', json_encode($list));
 
 }
+if (isset($_POST['done'])) {
+    $index = $_POST['done'];
+    //cercare elemento e poi cancellare
+    //$index = null;
+    // foreach ($list as $key => $value) {
+    //     if ($value['id'] === $id) {
+    //         $index = $key;
+    //     }
+
+    // }
+    //var_dump($index);
+    $list[$index]['done'] = !$list[$index]['done'];
+    //var_dump($list);
+    file_put_contents(__DIR__ . '/Model/to-do-list.json', json_encode($list));
+
+}
 
 header('Content-Type: application/json');
 

@@ -62,6 +62,11 @@ createApp({
     itemDone(ident) {
       const index = this.findElement(ident, this.toDoList);
       //this.toDoList[index].done = !this.toDoList[index].done;
+      this.postAxios('done', index, this.apiUrl)
+        .then(resp => {
+          console.log(resp.data);
+          this.toDoList = resp.data;
+        });
       //obj.done=!obj.done
       //console.log('item done')
     },
